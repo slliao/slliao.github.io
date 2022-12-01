@@ -1,3 +1,9 @@
+
+### Change the contact icon of sidebar
+```
+_data/contact.yml
+```
+
 <div align="center">
 
   # Chirpy Jekyll Theme
