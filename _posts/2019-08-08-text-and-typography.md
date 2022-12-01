@@ -6,6 +6,7 @@ categories: [Blogging, Demo]
 tags: [typography]
 math: true
 mermaid: true
+pin: true
 image:
   path: /commons/devices-mockup.png
   width: 800
