@@ -1,6 +1,6 @@
 ---
 layout: post
-title: git + overleaf + github
+title: Overleaf + GitHub
 categories: [Tools]
 tags: [LaTeX, GitHub]
 ---
