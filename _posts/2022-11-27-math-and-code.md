@@ -1,8 +1,8 @@
 ---
 title: Math and Code
 author: Mark
-categories: [Blogging]
-tags: [Markdown]
+categories: [Tools]
+tags: [Markdown, LaTeX]
 math: true
 mermaid: true
 pin: false
