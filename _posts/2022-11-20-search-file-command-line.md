@@ -1,5 +1,5 @@
 ---
-title: Search Files in Command Line
+title: Search files by command Line
 categories: [Tools, Linux]
 tags: Linux
 ---
