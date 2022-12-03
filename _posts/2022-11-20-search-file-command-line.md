@@ -1,6 +1,6 @@
 ---
 title: Search Files in Command Line
-categories: [Tools]
+categories: [Tools, Linux]
 tags: Linux
 ---
 Search file/搜尋檔案 (Linux Tips)

@@ -1,7 +1,7 @@
 ---
 title: Math and Code
 author: Mark
-categories: [Tools]
+categories: [Tools, Markdown]
 tags: [Markdown, LaTeX]
 math: true
 mermaid: true

@@ -8,3 +8,5 @@ I’m a Postdoc in Chemical Engineering, Stanford University. I work on a variet
 
 My academic traning was computational physics and I worked on time-dependent functional theory and quantum optimal control theory for several years.
 
+This website contains my personal notes for researches and some random thoughts. 
+
