@@ -2,19 +2,15 @@
 title: MDAnalysis
 categories: [MD, tools]
 tags: [MDAnalysis, MD]
-image:
-  path: /img/md/
-  width: 800
-  height: 500
-  alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
 The data structure in MDAnalysis
-![Atoms and atom groups](group_atoms.png)
+![Atoms and atom groups](/img/md/group_atoms.png){:class="img-responsive"}
 
 Source: https://userguide.mdanalysis.org/stable/groups_of_atoms.html
 
-![Atoms and atom groups](/img/md/group_atoms.png){:class="img-responsive"}
+![Atoms and atom groups](/img/md/group_atoms.png)
+
 
 ### Selecting atoms
 
