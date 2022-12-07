@@ -5,7 +5,7 @@ tags: [MDAnalysis, MD]
 ---
 
 The data structure in MDAnalysis
-![Atoms and atom groups](/img/md/group_atoms.png){:class="img-responsive"}
+![Atoms and atom groups](img/md/group_atoms.png){:class="img-responsive"}
 
 Source: https://userguide.mdanalysis.org/stable/groups_of_atoms.html
 
