@@ -5,6 +5,12 @@ tags: Linux
 ---
 Search file/搜尋檔案 (Linux Tips)
 
+Find oldest files
+
+```bash
+find /home/sk/ostechnix/ -type f -printf '%T+ %p\n' | sort | head -n 5
+```
+
 找出大於Gigabyte 的資料夾：
 ```console
 # du -h -d 1 /var | grep '[0-9]G\>'
@@ -77,4 +83,3 @@ find $HOME -type f -ctime +30
 尋找特定使用者的檔案 ( 以帳號名稱 tom 為例 )
 
 find $HOME -type f -user tom
-
