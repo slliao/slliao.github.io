@@ -4,16 +4,16 @@ categories: [MD, tools]
 tags: [MDAnalysis, MD]
 ---
 
+## MDAnalysis
+
+### Atoms, residules, and segments
+
 The data structure in MDAnalysis
 ![Atoms and atom groups](img/md/group_atoms.png){:class="img-responsive"}
 
 Source: https://userguide.mdanalysis.org/stable/groups_of_atoms.html
 
-![Atoms and atom groups](/img/md/group_atoms.png)
-
-
 ### Selecting atoms
-
 Numerical ranges can be written as first-last or first:last where the range is inclusive. Note that ***in slicing, the last index is not included***.
 
 
