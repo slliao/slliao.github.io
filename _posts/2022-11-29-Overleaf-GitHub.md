@@ -16,6 +16,16 @@ git push github master
 
 Any changes you made on overleaf should now be on both your local repo and on Github!
 
+```
+git log -- [filename] 
+```
+shows me the commit history of a file 
+
+```
+git log -p -- filename
+```
+generate the patches for each log entry.
+
 If you want to make changes via your local repo, just push to both remote repos (after staging and committing locally):
 
 ```

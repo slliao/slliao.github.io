@@ -1,6 +1,6 @@
 ---
 title: MDAnalysis
-categories: [MD, tools]
+categories: [Molecular Dynamics, tools]
 tags: [MDAnalysis, MD]
 ---
 
@@ -20,8 +20,6 @@ Numerical ranges can be written as first-last or first:last where the range is i
 ```console
 print(u.select_atoms('resid 50-100').n_residues)
 print(u.residues[50:100].n_residues)
-```
-```
-51
-50
+> 51
+> 50
 ```
