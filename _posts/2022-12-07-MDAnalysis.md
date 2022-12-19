@@ -1,6 +1,6 @@
 ---
 title: MDAnalysis
-categories: [Molecular Dynamics, tools]
+categories: [Molecular Dynamics, analysis tools]
 tags: [MDAnalysis, MD]
 ---
 
