@@ -4,9 +4,14 @@ categories: [Tools, Linux]
 tags: Linux
 ---
 
-## We can recursively Remove the files with certain patterns recursively under a folder.
+## Remove the files with certain patterns recursively under a folder.
 
-### Removes files with find-exec 
+### Delete all files in a directory apart from all .zip and .odt files as follows, while displaying what is being done.
+```bash
+$ rm -v !(*.zip|*.odt)
+```
+
+### Remove files with find-exec 
 ```bash
 find . -type f -name '*.txt~' -exec rm -f {} \;
 ```
