@@ -9,6 +9,8 @@ tags: Linux
 ### Delete all files in a directory apart from all .zip and .odt files as follows, while displaying what is being done.
 ```bash
 $ rm -v !(*.zip|*.odt)
+
+
 ```
 
 ### Remove files with find-exec 
