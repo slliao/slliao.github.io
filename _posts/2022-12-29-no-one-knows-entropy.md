@@ -1,5 +1,5 @@
 ---
-title: Story: no one knows what entropy really is
+title: "Story: no one knows what entropy really is"
 categories: [Random, scientists]
 tags: [Entropy,  Shannon, John von Neumann]
 ---

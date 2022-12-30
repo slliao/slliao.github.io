@@ -7,6 +7,12 @@ tags: [Markdown]
 render_with_liquid: false
 pin: true
 ---
+To start Jekyll with Bundler
+<p></p>
+<p></p>
+``` 
+bundle exec jekyll serve
+```
 
 This post will guide you how to write a post on _Chirpy_ theme. Even if you have previous experience with Jekyll, this article is worth reading, because many features require specific variables to be set.
 

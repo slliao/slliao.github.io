@@ -3,7 +3,7 @@ layout: post
 title: 'Jekyll Server on local host'
 categories: [Tools]
 tags: [Jekyll, GitHub]
-pin: true
+pin: false
 ---
 To start Jekyll with Bundler
 <p></p>
