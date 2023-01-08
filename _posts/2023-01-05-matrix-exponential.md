@@ -12,12 +12,12 @@ If a matrix A is diagonalizable, then there exists an invertible P so that $A = 
 
 If A is an $n \times n$ matrix with a single eigenvalue $\lambda$, then there exist a nonnegtive integer $k < n$ such that 
 $$
-e^{tA} = e^{\lambda t} \left[I + t(A-\lambda I)+ \frac{t^2}{2!}(A-\lambda)^2+\cdots+\frac{t^k}{k!}(A-\lambda)^k\right]
+e^{tA} = e^{\lambda t} \left[ \mathbb I + t(A-\lambda \mathbb I)+ \frac{t^2}{2!}(A-\lambda \mathbb I)^2+\cdots+\frac{t^k}{k!}(A-\lambda \mathbb I)^k\right]
 \,.
 $$
 
-If $\lambda$ is an eigenvalue of $A$ and $(A-\lambda I)^p \, {\mathbf v} = 0$ for some $p\ge 1$, 
+If $\lambda$ is an eigenvalue of $A$ and $(A-\lambda \mathbb I)^p \, {\mathbf v} = 0$ for some $p\ge 1$, 
 then $\mathbf v$ is called a generalized eigenvector of $A$.
-When eigenvalues have algebraic multiplicity greater than one, we can compute extra solutions by looking for vectors in the nullspace of $(A-\lambda I)^p$.
+When eigenvalues have algebraic multiplicity greater than one, we can compute extra solutions by looking for vectors in the nullspace of $(A-\lambda \mathbb I)^p$.
 
 Ref: [The Ordinary Differential Equations Project](http://faculty.sfasu.edu/judsontw/ode/html-20180819/odeproject.html)  by Thomas W. Judson.

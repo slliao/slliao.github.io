@@ -1,7 +1,7 @@
 ---
 title: References of quantum computing
-categories: [Quantum Computing, Business]
-tags: [QC business]
+categories: [Quantum Computing, Market&Business]
+tags: [QC Market]
 ---
 
 [BCG: The Race to Quantum Advantage Depends on Benchmarking](https://www.bcg.com/publications/2022/value-of-quantum-computing-benchmarks)
