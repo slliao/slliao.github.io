@@ -1,6 +1,6 @@
 ---
 title: References of quantum computing
-categories: [Quantum Computing, Market&Business]
+categories: [Quantum Computing, Market & Business]
 tags: [QC Market]
 ---
 
