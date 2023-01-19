@@ -3,6 +3,12 @@ title: Transport equations
 categories: [Transport, Boltzmann Equation]
 tags: [Boltzmann equation, Kinetic theory]
 ---
+###
+
+Onsager's regression hypothesis states that fluctuations evolve according to the laws that govern macroscopic variations.
+
+ 
+
 
 ### Boltzmann equation 
 the derivation of Euler, Navier–Stokes, Burnett, and super-Burnett equations from the Boltzmann equation using Chapman–Enskog method
