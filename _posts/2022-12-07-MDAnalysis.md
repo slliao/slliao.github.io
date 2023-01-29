@@ -23,3 +23,21 @@ print(u.residues[50:100].n_residues)
 > 51
 > 50
 ```
+
+### Angles, Dihedral angles
+```python
+nhh = u.atoms[:3]
+print(nhh.names)
+angle_nhh = nhh.angle
+print(f"N-H-H angle: {angle_nhh.value():.2f}")
+```
+
+[Rotating around a dihedral with MDAnalysis](http://www.richardjgowers.com/2017/08/14/rotating.html)
+
+### [Parallelizing analysis](https://userguide.mdanalysis.org/stable/examples/analysis/custom_parallel_analysis.html)
+
+
+Ref: \
+[Quick start guide](https://userguide.mdanalysis.org/stable/examples/quickstart.html) \
+[MDAnalysis Examples](https://userguide.mdanalysis.org/stable/examples/README.html)
+
