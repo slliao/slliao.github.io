@@ -1,6 +1,6 @@
 ---
 title: Analogies in Physics
-categories: [Radom, Reading & Thoughts]
+categories: [Random, Reading & Thoughts]
 tags: [fluctuation, correlation]
 math: true
 mermaid: true
