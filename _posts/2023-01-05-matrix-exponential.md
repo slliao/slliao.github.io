@@ -1,7 +1,7 @@
 ---
 title: The Matrix Exponential 
 categories: [Math, Linear Algebra ]
-tags: [PDF, Matrix Exponential]
+tags: [PDE, Matrix Exponential]
 math: true
 mermaid: true
 ---
