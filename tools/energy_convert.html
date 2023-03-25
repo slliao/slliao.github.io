@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Energy Conversion Tool</title>
+  </head>
+  <body>
+    <h1>Energy Conversion Tool</h1>
+    <p>Enter an energy value and select the input unit:</p>
+    <form>
+      <label for="energyInput">Energy:</label>
+      <input type="number" id="energyInput" name="energyInput" value="0">
+      <select id="inputUnit">
+        <option value="eV">eV</option>
+        <option value="J/mol">J/mol</option>
+        <option value="kcal/mol">kcal/mol</option>
+        <option value="Hartree">Hartree</option>
+      </select>
+      <button type="button" onclick="displayResult()">Convert</button>
+    </form>
+    <br>
+    <div id="energyInputOutput"></div>
+    <script>
+      function convertEnergy(energyInput, inputUnit, outputUnit) {
+        if (inputUnit === outputUnit) {
+          return energyInput;
+        }
+        var conversionFactors = {
+          'eV': {
+            'J/mol': 96485.3329,
+            'kcal/mol': 23.0605465,
+            'Hartree': 0.0367493
+          },
+          'J/mol': {
+            'eV': 0.000010363,
+            'kcal/mol': 0.000239006,
+            'Hartree': 0.0000003809
+          },
+          'kcal/mol': {
+            'eV': 0.0433641,
+            'J/mol': 4184,
+            'Hartree': 0.0015936
+          },
+          'Hartree': {
+            'eV': 27.211386,
+            'J/mol': 2625499.638,
+            'kcal/mol': 627.509391
+          }
+        };
+        return energyInput * conversionFactors[inputUnit][outputUnit];
+      }
+
+function displayResult() {
+  var energyInput = parseFloat(document.getElementById("energyInput").value);
+  var inputUnit = document.getElementById("inputUnit").value;
+
+  var inputUnitStr = "Input Energy:" + " ".repeat(8 - inputUnit.length) + inputUnit + " = ";
+
+
+  var eVStr = "eV" + "&nbsp".repeat(11);
+  var jmolStr = "J/mol" + "&nbsp".repeat(7);
+  var kcalmolStr = "kcal/mol" + "&nbsp".repeat(2);
+  var hartreeStr = "Hartree" + "&nbsp".repeat(4);
+
+  var outputUnitStr = "Output Energy: " + "<br>" +
+                      eVStr + "= " + convertEnergy(energyInput, inputUnit, "eV").toPrecision(8) + "<br>" +
+                      jmolStr + "= " + convertEnergy(energyInput, inputUnit, "J/mol").toPrecision(8) + "<br>" +
+                      kcalmolStr + "= " + convertEnergy(energyInput, inputUnit, "kcal/mol").toPrecision(8) + "<br>" +
+                      hartreeStr + "= " + convertEnergy(energyInput, inputUnit, "Hartree").toPrecision(8);
+
+  var energyInputStr = energyInput.toPrecision(8);
+
+  document.getElementById("energyInputOutput").innerHTML = inputUnitStr + energyInputStr + "<br>" + outputUnitStr;
+}
+    </script>
+  </body>
+</html>
+
