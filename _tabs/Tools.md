@@ -1,7 +1,9 @@
 ---
 # the default layout is 'page'
-icon: fas fa-info-circle
+icon: fas fa-archive
 order: 5
 ---
 
-Test
+HTML Test
+
+[Energy Converter](/script_homemade/energy_convert.html)
