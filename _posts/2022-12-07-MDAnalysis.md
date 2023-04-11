@@ -24,6 +24,10 @@ print(u.residues[50:100].n_residues)
 > 50
 ```
 
+### Constructing, modifying, and adding to a Universe
+https://userguide.mdanalysis.org/stable/examples/constructing_universe.html
+
+
 ### Angles, Dihedral angles
 ```python
 nhh = u.atoms[:3]
