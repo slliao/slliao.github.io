@@ -2,11 +2,21 @@
 <html>
 <head>
     <title>Ionic Conductivity Estimation</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <h1>Ionic Conductivity Estimation</h1>
-    <p>The Nernst-Einstein Equation relates ionic conductivity to diffusivity and temperature.</p>
-    
+    <p>The Nernst-Einstein Equation relates ionic conductivity to diffusivity and temperature, i.e.,
+  \(\Lambda = \beta\, \frac{F^2}{RT}(D^+ + D^-) \,, \)
+  where
+  <ul>
+    <li>\(\Lambda\) is the molar conductivity,</li>
+    <li>\(\beta\) is ionicity, </li>
+    <li>\(F\) is Faraday's constant, </li>
+    <li>\(D\) is the diffusion coefficient.</li>
+  </ul>
+</p>    
     
     <label for="cation-diffusivity">Cation Diffusivity:</label>
     <input type="text" id="cation-diffusivity" placeholder="Self diffusivity (m^2/s)">
