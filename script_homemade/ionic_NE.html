@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ionic Conductivity Estimation</title>
+</head>
+<body>
+    <h1>Ionic Conductivity Estimation</h1>
+    <p>The Nernst-Einstein Equation relates ionic conductivity to diffusivity and temperature.</p>
+    
+    
+    <label for="cation-diffusivity">Cation Diffusivity:</label>
+    <input type="text" id="cation-diffusivity" placeholder="Self diffusivity (m^2/s)">
+    <br><br>
+    <label for="anion-diffusivity">Anion Diffusivity:</label>
+    <input type="text" id="anion-diffusivity" placeholder="Self diffusivity(m^2/s)">
+    <br><br>
+    <label for="molarity">Molarity:</label>
+    <input type="text" id="molarity" placeholder="Molarity (mol/L)">
+    <br><br>
+    <label for="ionicity">Ionicity:</label>
+    <input type="text" id="ionicity" placeholder="Ionicity (default: 1)">
+    <br><br>
+
+    <button onclick="estimateConductivity()">Estimate Ionic Conductivity</button>
+    
+    <p id="result"></p>
+    
+    <script>
+        function estimateConductivity() {
+            // Get user input values
+            var cationDiffusivity = parseFloat(document.getElementById("cation-diffusivity").value);
+            var anionDiffusivity = parseFloat(document.getElementById("anion-diffusivity").value);
+            var molarity = parseFloat(document.getElementById("molarity").value);
+            var ionicity = parseFloat(document.getElementById("ionicity").value) || 1;
+                        
+            
+            // Constants
+            var elementaryCharge = 1.60217663e-19; // Elementary charge value in Coulombs (example value)
+            var Avogadro = 6.02214076e23; // Avogadro's number
+            
+            // Perform calculation
+            var RT = 2478.957 ; // Temperature in 298 Kelvin (example value)
+            var molarConductivity = ionicity * ((elementaryCharge*Avogadro)**2 / RT) * (cationDiffusivity + anionDiffusivity);
+            var conductivity = molarConductivity * molarity * 1000;
+            
+            // Display result
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "Molar Ionic Conductivity: " + conductivity.toExponential(4) + " S m^2/mole";
+            // Display result
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "Molar Ionic Conductivity: " + molarConductivity.toExponential(4) + " S m<sup>2</sup>/mol<br>" +
+                                      "Conductivity: " + conductivity.toFixed(4) + " S/m";
+        }
+    </script>
+</body>
+</html>
