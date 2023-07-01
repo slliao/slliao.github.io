@@ -33,5 +33,5 @@ git config --list
 ```
 
 
-[How to manage multiple Github accounts from a single machine](https://www.educative.io/answers/how-to-manage-multiple-github-accounts-from-a-single-machine)
+[How to manage multiple Github accounts from a single machine](https://www.educative.io/answers/how-to-manage-multiple-github-accounts-from-a-single-machine)\
 [Git: How to Handle Merge Conflicts](https://www.nobledesktop.com/learn/git/merge-conflicts)
