@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
 
 I’m a Postdoc in the Department of Chemical Engineering, Stanford University. I work on several projects related to lithium metal battery, in particular the high-concentration electrolyte. Before joining Stanford, I worked in GGA Corp. Taiwan.
