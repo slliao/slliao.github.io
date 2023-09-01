@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molarity Calculator</title>
+</head>
+<body>
+
+<h2>Molarity Calculator</h2>
+
+<label for="N">Number of Molecules (N):</label>
+<input type="number" id="N" placeholder="Enter number of molecule">
+<br><br>
+
+<label for="L">Length of Cube Box (length in nm):</label>
+<input type="number" id="L" placeholder="Enter length of cube box">
+<br><br>
+
+<button onclick="calculateMolarity()">Calculate Molarity</button>
+<br><br>
+
+<p id="result"></p>
+
+<script>
+    function calculateMolarity() {
+        const avogadroNumber = 6.022e23;
+        const nm3ToLiters = 1e-24;
+
+        const N = parseFloat(document.getElementById('N').value);
+        const L = parseFloat(document.getElementById('L').value);
+
+        const volume = Math.pow(L, 3) * nm3ToLiters; // Convert volume from nm^3 to liters
+        const moles = N / avogadroNumber;
+        const molarity = moles / volume;
+
+        document.getElementById('result').innerText = `Molarity: ${molarity.toFixed(6)} M`;
+    }
+</script>
+
+</body>
+</html>
+
