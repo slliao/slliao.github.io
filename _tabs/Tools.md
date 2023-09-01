@@ -8,4 +8,4 @@ order: 4
 
 [Ionic Conductivity](/script_homemade/ionic_NE.html)
 
-[Molarity calculator](/script_homemade/molarity.html)
+[Molarity Calculator](/script_homemade/molarity.html)
