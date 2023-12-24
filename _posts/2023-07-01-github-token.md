@@ -36,7 +36,20 @@ Now issue a command to interract with Github which requires authentication, eg. 
 Add a new remote with your updated GitHub personal access token:
 ```
 git remote add origin https://[PERSONALACCESSTOKEN]@github.com/[USERNAME]/[REPO].git
+
 ```
+
+## Updating the Access Token
+
+If you need to regenerate the Access Token (maybe you got a new Mac and didn't make a note of your existing token) then follow the procedure before in your Github account settings to generate a new token.
+
+Then, on your local Mac you can either use the Keychain Access app to delete the old token (search for Github.com in the App), or, use the following command.
+
+```bash
+git credential-osxkeychain erase
+```
+
+Now, the next time you do a `clone/pull/push` etc Github should prompt you for your new token on the command line and entering the new token should also add it to youe local Key Chain.
 
 To push the current branch and set the remote as upstream, use
 ```
