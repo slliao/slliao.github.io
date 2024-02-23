@@ -1,5 +1,5 @@
 ---
-title: GROMACS
+title: GROMACS: file format
 categories: [Molecular Dynamics,Gromacs]
 tags: [GROMACS]
 ---
