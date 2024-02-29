@@ -1,5 +1,5 @@
 ---
-title: GROMACS: file format
+title: Convert file format from GROMACS to xyz
 categories: [Molecular Dynamics,Gromacs]
 tags: [GROMACS]
 ---
