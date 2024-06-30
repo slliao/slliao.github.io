@@ -3,9 +3,11 @@
 icon: fas fa-info-circle
 order: 1
 ---
+I am a Senior Simulation Engineer at Factorial Energy, where I apply advanced simulation techniques and physical chemistry principles to improve electrolytes for lithium metal batteries.
 
-I’m a Postdoc in the Department of Chemical Engineering, Stanford University. I work on several projects related to lithium metal battery, in particular the high-concentration electrolyte. Before joining Stanford, I worked in GGA Corp. Taiwan.
+Prior to joining Factorial Energy, I pursued a postdoctoral fellowship in the Department of Chemical Engineering at Stanford University. There, I engaged in several projects focused on lithium metal batteries, particularly on high-concentration electrolytes. Before my journey to Stanford, I worked at GGA Corp. in Taiwan.
 
-My academic training was computational physics and I focussed on time-dependent density functional theory (TDDFT) and quantum optimal control theory during my PhD program.
+My academic foundation is in computational physics, with a specific focus on time-dependent density functional theory (TDDFT) and quantum optimal control theory.
 
-This website contains my personal notes for researches, random thoughts, and stories of scientists. 
+This website serves as a repository for my personal research notes, reflections on random thoughts, and stories of scientists.
+
