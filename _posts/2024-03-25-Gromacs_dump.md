@@ -1,7 +1,7 @@
 ---
 title: GROMACS gmx dump
-categories: [Molecular Dynamics, Gromacs]
-tags: [Gromacs, MD]
+categories: [Molecular Dynamics, GROMACS]
+tags: [GROMACS, MD]
 ---
 
 ## Gromacs

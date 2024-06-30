@@ -3,9 +3,9 @@ title: Writing a New Post
 author: cotes
 date: 2019-08-08 14:10:00 +0800
 categories: [Tools, Blogging]
-tags: [Markdown]
+tags: [Jekyll,Markdown]
 render_with_liquid: false
-pin: true
+pin: False
 ---
 To start Jekyll with Bundler
 <p></p>
