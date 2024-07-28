@@ -13,9 +13,6 @@ mermaid: true
 ### Bis(fluorosulfonyl)amide, [N(SO2F)2]-, FSI (OPLS) 
 ![FSI](/img/md/FSI.png){:class="img-responsive"}
 
-
-
-
-### references
+### References:
 [Molecular Force Field for Ionic Liquids](https://pubs.acs.org/doi/10.1021/jp9120468) \
 [Ionic liquid force field parameters (OPLS-2009IL and OPLS-VSIL)](https://github.com/orlandoacevedo/IL)
