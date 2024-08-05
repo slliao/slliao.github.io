@@ -34,4 +34,6 @@ git config --list
 
 
 [How to manage multiple Github accounts from a single machine](https://www.educative.io/answers/how-to-manage-multiple-github-accounts-from-a-single-machine)\
+[Work With Multiple Github Accounts on a single Machine](https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3)\
+[8 Easy Steps to Set Up Multiple GitHub Accounts](https://blog.gitguardian.com/8-easy-steps-to-set-up-multiple-git-accounts/)\
 [Git: How to Handle Merge Conflicts](https://www.nobledesktop.com/learn/git/merge-conflicts)
