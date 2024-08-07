@@ -9,3 +9,5 @@ order: 4
 [Ionic Conductivity](/script_homemade/ionic_NE.html)
 
 [Molarity Calculator](/script_homemade/molarity.html)
+
+[Deposition Thickness](/script_homemade/lithium_thickness.html)

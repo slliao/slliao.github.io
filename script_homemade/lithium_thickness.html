@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lithium Reduction Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 5px;
+        }
+        #results {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lithium Reduction Calculator</h2>
+    <label for="mAhrInput">Enter Capacity per cm<sup>2</sup> (mAh):</label>
+    <input type="number" id="mAhrInput" placeholder="100">
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="results"></div>
+
+    <div id="info">
+        <p>1 Ampere-hour (Ahr) is equivalent to:</p>
+        <ul>
+            <li>3600 Coulombs (C)</li>
+            <li>2.247 × 10<sup>22</sup> protons</li>
+            <li>0.0373 moles of protons</li>
+        </ul>
+    </div>
+
+    <script>
+        function calculate() {
+            const mAhr = document.getElementById('mAhrInput').value;
+            const F = 96485.33212; // Faraday's constant (C/mol)
+            const density_Li = 0.534; // Lithium density (g/cm^3)
+            const molar_mass_Li = 6.941; // Molar mass (g/mol)
+
+            // Convert mAh to Coulombs
+            const charge_C = mAhr * (1/1000) * 3600;
+
+            // Calculate moles of Li+ reduced
+            const moles_Li = charge_C / F;
+
+            // Calculate the volume and thickness of lithium plating
+            const molar_volume_Li = molar_mass_Li / density_Li;
+            const volume_Li_plated = moles_Li * molar_volume_Li;
+            const thickness_Li_nm = (volume_Li_plated / 1) * 1e7; // Assuming area is 1 cm^2
+
+            // Display the results
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `<p>${mAhr} mAh is equivalent to ${moles_Li.toFixed(8)} moles of Li+ reduced.</p>
+                                    <p>The thickness of lithium plating is ${thickness_Li_nm.toFixed(2)} nm.</p>`;
+        }
+    </script>
+</body>
+</html>
