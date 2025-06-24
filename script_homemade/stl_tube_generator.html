@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STL Shape Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .shape-selector {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border: 2px solid #4CAF50;
+        }
+        .shape-selector h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .shape-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        .shape-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .shape-option:hover {
+            background-color: #e8f5e8;
+        }
+        .shape-option input[type="radio"] {
+            margin-bottom: 10px;
+            transform: scale(1.5);
+        }
+        .shape-option label {
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .input-section {
+            display: none;
+        }
+        .input-section.active {
+            display: block;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .input-row .input-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="number"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .preview {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        .preview h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .wall-thickness {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2196F3;
+        }
+        .error {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 STL Shape Generator</h1>
+        
+        <!-- Shape Selection -->
+        <div class="shape-selector">
+            <h3>Choose Shape Type:</h3>
+            <div class="shape-options">
+                <div class="shape-option">
+                    <input type="radio" id="cylinder" name="shapeType" value="cylinder" checked>
+                    <label for="cylinder">🔵 Cylinder</label>
+                </div>
+                <div class="shape-option">
+                    <input type="radio" id="rectangle" name="shapeType" value="rectangle">
+                    <label for="rectangle">⬜ Rectangle</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cylinder Inputs -->
+        <div id="cylinderInputs" class="input-section active">
+            <div class="section-title">Cylinder Parameters</div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="outerDiameter">Outer Diameter (mm):</label>
+                    <input type="number" id="outerDiameter" value="20" min="1" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="innerDiameter">Inner Diameter (mm):</label>
+                    <input type="number" id="innerDiameter" value="16" min="0" step="0.1">
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="cylinderHeight">Height (mm):</label>
+                    <input type="number" id="cylinderHeight" value="30" min="0.1" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="cylinderBottomThickness">Bottom Thickness (mm):</label>
+                    <input type="number" id="cylinderBottomThickness" value="2" min="0.1" max="10" step="0.1">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="segments">Circular Segments (affects smoothness):</label>
+                <input type="number" id="segments" value="24" min="8" max="100" step="1">
+            </div>
+        </div>
+
+        <!-- Rectangle Inputs -->
+        <div id="rectangleInputs" class="input-section">
+            <div class="section-title">Rectangle Parameters</div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="outerLength">Outer Length (mm):</label>
+                    <input type="number" id="outerLength" value="40" min="1" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="outerWidth">Outer Width (mm):</label>
+                    <input type="number" id="outerWidth" value="30" min="1" step="0.1">
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="innerLength">Inner Length (mm):</label>
+                    <input type="number" id="innerLength" value="36" min="0" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="innerWidth">Inner Width (mm):</label>
+                    <input type="number" id="innerWidth" value="26" min="0" step="0.1">
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="rectangleHeight">Height (mm):</label>
+                    <input type="number" id="rectangleHeight" value="30" min="0.1" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="rectangleBottomThickness">Bottom Thickness (mm):</label>
+                    <input type="number" id="rectangleBottomThickness" value="2" min="0.1" max="10" step="0.1">
+                </div>
+            </div>
+        </div>
+        
+        <div class="preview" id="preview">
+            <h3>Preview Information:</h3>
+            <div id="previewContent"></div>
+        </div>
+        
+        <div class="button-group">
+            <button onclick="generateSTL()">Generate and Download STL File</button>
+            <button onclick="updatePreview()">Update Preview</button>
+        </div>
+    </div>
+
+    <script>
+        // Shape selection handling
+        document.querySelectorAll('input[name="shapeType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide all input sections
+                document.querySelectorAll('.input-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                if (this.value === 'cylinder') {
+                    document.getElementById('cylinderInputs').classList.add('active');
+                } else {
+                    document.getElementById('rectangleInputs').classList.add('active');
+                }
+                
+                updatePreview();
+            });
+        });
+
+        function getSelectedShape() {
+            return document.querySelector('input[name="shapeType"]:checked').value;
+        }
+
+        function updatePreview() {
+            const shape = getSelectedShape();
+            const previewContent = document.getElementById('previewContent');
+            
+            if (shape === 'cylinder') {
+                updateCylinderPreview();
+            } else {
+                updateRectanglePreview();
+            }
+        }
+
+        function updateCylinderPreview() {
+            const outer = parseFloat(document.getElementById('outerDiameter').value);
+            const inner = parseFloat(document.getElementById('innerDiameter').value);
+            const height = parseFloat(document.getElementById('cylinderHeight').value);
+            const bottomThickness = parseFloat(document.getElementById('cylinderBottomThickness').value);
+            const segments = parseInt(document.getElementById('segments').value);
+            
+            const previewContent = document.getElementById('previewContent');
+            
+            if (inner >= outer) {
+                previewContent.innerHTML = '<div class="error">Error: Inner diameter must be smaller than outer diameter!</div>';
+                return;
+            }
+            
+            if (inner < 0 || outer <= 0 || height <= 0 || bottomThickness <= 0) {
+                previewContent.innerHTML = '<div class="error">Error: All dimensions must be positive numbers!</div>';
+                return;
+            }
+            
+            const wallThickness = (outer - inner) / 2;
+            const wallVolume = Math.PI * height * (Math.pow(outer/2, 2) - Math.pow(inner/2, 2));
+            const bottomVolume = Math.PI * Math.pow(outer/2, 2) * bottomThickness;
+            const totalVolume = wallVolume + bottomVolume;
+            
+            previewContent.innerHTML = `
+                <p><strong>Shape:</strong> Cylinder</p>
+                <p><strong>Wall Thickness:</strong> <span class="wall-thickness">${wallThickness.toFixed(2)} mm</span></p>
+                <p><strong>Bottom Thickness:</strong> <span class="wall-thickness">${bottomThickness.toFixed(2)} mm</span></p>
+                <p><strong>Outer Diameter:</strong> ${outer} mm</p>
+                <p><strong>Inner Diameter:</strong> ${inner} mm</p>
+                <p><strong>Total Height:</strong> ${height} mm</p>
+                <p><strong>Internal Height:</strong> ${(height - bottomThickness).toFixed(2)} mm</p>
+                <p><strong>Circular Segments:</strong> ${segments}</p>
+                <p><strong>Total Material Volume:</strong> ${totalVolume.toFixed(2)} mm³</p>
+            `;
+        }
+
+        function updateRectanglePreview() {
+            const outerLength = parseFloat(document.getElementById('outerLength').value);
+            const outerWidth = parseFloat(document.getElementById('outerWidth').value);
+            const innerLength = parseFloat(document.getElementById('innerLength').value);
+            const innerWidth = parseFloat(document.getElementById('innerWidth').value);
+            const height = parseFloat(document.getElementById('rectangleHeight').value);
+            const bottomThickness = parseFloat(document.getElementById('rectangleBottomThickness').value);
+            
+            const previewContent = document.getElementById('previewContent');
+            
+            if (innerLength >= outerLength || innerWidth >= outerWidth) {
+                previewContent.innerHTML = '<div class="error">Error: Inner dimensions must be smaller than outer dimensions!</div>';
+                return;
+            }
+            
+            if (innerLength < 0 || innerWidth < 0 || outerLength <= 0 || outerWidth <= 0 || height <= 0 || bottomThickness <= 0) {
+                previewContent.innerHTML = '<div class="error">Error: All dimensions must be positive numbers!</div>';
+                return;
+            }
+            
+            const wallThicknessLength = (outerLength - innerLength) / 2;
+            const wallThicknessWidth = (outerWidth - innerWidth) / 2;
+            const outerVolume = outerLength * outerWidth * height;
+            const innerVolume = innerLength * innerWidth * (height - bottomThickness);
+            const totalVolume = outerVolume - innerVolume;
+            
+            previewContent.innerHTML = `
+                <p><strong>Shape:</strong> Rectangle</p>
+                <p><strong>Wall Thickness (Length):</strong> <span class="wall-thickness">${wallThicknessLength.toFixed(2)} mm</span></p>
+                <p><strong>Wall Thickness (Width):</strong> <span class="wall-thickness">${wallThicknessWidth.toFixed(2)} mm</span></p>
+                <p><strong>Bottom Thickness:</strong> <span class="wall-thickness">${bottomThickness.toFixed(2)} mm</span></p>
+                <p><strong>Outer Dimensions:</strong> ${outerLength} × ${outerWidth} mm</p>
+                <p><strong>Inner Dimensions:</strong> ${innerLength} × ${innerWidth} mm</p>
+                <p><strong>Total Height:</strong> ${height} mm</p>
+                <p><strong>Internal Height:</strong> ${(height - bottomThickness).toFixed(2)} mm</p>
+                <p><strong>Total Material Volume:</strong> ${totalVolume.toFixed(2)} mm³</p>
+            `;
+        }
+        
+        function generateSTL() {
+            const shape = getSelectedShape();
+            
+            if (shape === 'cylinder') {
+                generateCylinderSTL();
+            } else {
+                generateRectangleSTL();
+            }
+        }
+
+        function generateCylinderSTL() {
+            const outer = parseFloat(document.getElementById('outerDiameter').value);
+            const inner = parseFloat(document.getElementById('innerDiameter').value);
+            const height = parseFloat(document.getElementById('cylinderHeight').value);
+            const bottomThickness = parseFloat(document.getElementById('cylinderBottomThickness').value);
+            const segments = parseInt(document.getElementById('segments').value);
+            
+            if (inner >= outer) {
+                alert('Inner diameter must be smaller than outer diameter!');
+                return;
+            }
+            
+            if (inner < 0 || outer <= 0 || height <= 0 || bottomThickness <= 0) {
+                alert('All dimensions must be positive numbers!');
+                return;
+            }
+            
+            const stlData = createCylinderWithThickBottomSTL(outer/2, inner/2, height, bottomThickness, segments);
+            downloadSTL(stlData, `cylinder_${outer}x${inner}x${height}x${bottomThickness}.stl`);
+        }
+
+        function generateRectangleSTL() {
+            const outerLength = parseFloat(document.getElementById('outerLength').value);
+            const outerWidth = parseFloat(document.getElementById('outerWidth').value);
+            const innerLength = parseFloat(document.getElementById('innerLength').value);
+            const innerWidth = parseFloat(document.getElementById('innerWidth').value);
+            const height = parseFloat(document.getElementById('rectangleHeight').value);
+            const bottomThickness = parseFloat(document.getElementById('rectangleBottomThickness').value);
+            
+            if (innerLength >= outerLength || innerWidth >= outerWidth) {
+                alert('Inner dimensions must be smaller than outer dimensions!');
+                return;
+            }
+            
+            if (innerLength < 0 || innerWidth < 0 || outerLength <= 0 || outerWidth <= 0 || height <= 0 || bottomThickness <= 0) {
+                alert('All dimensions must be positive numbers!');
+                return;
+            }
+            
+            const stlData = createRectangleWithThickBottomSTL(outerLength, outerWidth, innerLength, innerWidth, height, bottomThickness);
+            downloadSTL(stlData, `rectangle_${outerLength}x${outerWidth}x${innerLength}x${innerWidth}x${height}x${bottomThickness}.stl`);
+        }
+        
+        function createCylinderWithThickBottomSTL(outerRadius, innerRadius, height, bottomThickness, segments) {
+            let stlContent = 'solid CylinderThickBottom\n';
+            
+            const angleStep = (2 * Math.PI) / segments;
+            
+            // Generate vertices for each segment
+            for (let i = 0; i < segments; i++) {
+                const angle1 = i * angleStep;
+                const angle2 = ((i + 1) % segments) * angleStep;
+                
+                // Calculate coordinates for outer and inner circles
+                const x1_outer = outerRadius * Math.cos(angle1);
+                const y1_outer = outerRadius * Math.sin(angle1);
+                const x2_outer = outerRadius * Math.cos(angle2);
+                const y2_outer = outerRadius * Math.sin(angle2);
+                const x1_inner = innerRadius * Math.cos(angle1);
+                const y1_inner = innerRadius * Math.sin(angle1);
+                const x2_inner = innerRadius * Math.cos(angle2);
+                const y2_inner = innerRadius * Math.sin(angle2);
+                
+                // Top ring surface (at full height) - triangle 1
+                stlContent += createTriangle(
+                    [x1_outer, y1_outer, height],
+                    [x1_inner, y1_inner, height],
+                    [x2_outer, y2_outer, height],
+                    [0, 0, 1]
+                );
+                
+                // Top ring surface - triangle 2
+                stlContent += createTriangle(
+                    [x2_outer, y2_outer, height],
+                    [x1_inner, y1_inner, height],
+                    [x2_inner, y2_inner, height],
+                    [0, 0, 1]
+                );
+                
+                // Bottom outer surface (at z=0) - solid disc
+                stlContent += createTriangle(
+                    [0, 0, 0],  // Center point
+                    [x1_outer, y1_outer, 0],
+                    [x2_outer, y2_outer, 0],
+                    [0, 0, -1]  // Normal pointing downward
+                );
+                
+                // Bottom inner surface (at z=bottomThickness) - ring shape
+                stlContent += createTriangle(
+                    [x1_inner, y1_inner, bottomThickness],
+                    [x1_outer, y1_outer, bottomThickness],
+                    [x2_outer, y2_outer, bottomThickness],
+                    [0, 0, 1]  // Normal pointing upward
+                );
+                
+                stlContent += createTriangle(
+                    [x1_inner, y1_inner, bottomThickness],
+                    [x2_outer, y2_outer, bottomThickness],
+                    [x2_inner, y2_inner, bottomThickness],
+                    [0, 0, 1]
+                );
+                
+                // Outer wall surface (from bottomThickness to full height)
+                stlContent += createTriangle(
+                    [x1_outer, y1_outer, bottomThickness],
+                    [x1_outer, y1_outer, height],
+                    [x2_outer, y2_outer, height],
+                    [Math.cos((angle1 + angle2)/2), Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                stlContent += createTriangle(
+                    [x1_outer, y1_outer, bottomThickness],
+                    [x2_outer, y2_outer, height],
+                    [x2_outer, y2_outer, bottomThickness],
+                    [Math.cos((angle1 + angle2)/2), Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                // Inner wall surface (from bottomThickness to full height)
+                stlContent += createTriangle(
+                    [x1_inner, y1_inner, bottomThickness],
+                    [x2_inner, y2_inner, height],
+                    [x1_inner, y1_inner, height],
+                    [-Math.cos((angle1 + angle2)/2), -Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                stlContent += createTriangle(
+                    [x1_inner, y1_inner, bottomThickness],
+                    [x2_inner, y2_inner, bottomThickness],
+                    [x2_inner, y2_inner, height],
+                    [-Math.cos((angle1 + angle2)/2), -Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                // Bottom thickness side walls (from z=0 to z=bottomThickness)
+                // Outer vertical edge
+                stlContent += createTriangle(
+                    [x1_outer, y1_outer, 0],
+                    [x1_outer, y1_outer, bottomThickness],
+                    [x2_outer, y2_outer, bottomThickness],
+                    [Math.cos((angle1 + angle2)/2), Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                stlContent += createTriangle(
+                    [x1_outer, y1_outer, 0],
+                    [x2_outer, y2_outer, bottomThickness],
+                    [x2_outer, y2_outer, 0],
+                    [Math.cos((angle1 + angle2)/2), Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                // Inner vertical edge
+                stlContent += createTriangle(
+                    [x1_inner, y1_inner, 0],
+                    [x2_inner, y2_inner, bottomThickness],
+                    [x1_inner, y1_inner, bottomThickness],
+                    [-Math.cos((angle1 + angle2)/2), -Math.sin((angle1 + angle2)/2), 0]
+                );
+                
+                stlContent += createTriangle(
+                    [x1_inner, y1_inner, 0],
+                    [x2_inner, y2_inner, 0],
+                    [x2_inner, y2_inner, bottomThickness],
+                    [-Math.cos((angle1 + angle2)/2), -Math.sin((angle1 + angle2)/2), 0]
+                );
+            }
+            
+            stlContent += 'endsolid CylinderThickBottom\n';
+            return stlContent;
+        }
+
+        function createRectangleWithThickBottomSTL(outerLength, outerWidth, innerLength, innerWidth, height, bottomThickness) {
+            let stlContent = 'solid RectangleThickBottom\n';
+            
+            // Calculate half dimensions for centering
+            const outerL = outerLength / 2;
+            const outerW = outerWidth / 2;
+            const innerL = innerLength / 2;
+            const innerW = innerWidth / 2;
+            
+            // Bottom face (solid rectangle at z=0)
+            stlContent += createTriangle([-outerL, -outerW, 0], [outerL, -outerW, 0], [outerL, outerW, 0], [0, 0, -1]);
+            stlContent += createTriangle([-outerL, -outerW, 0], [outerL, outerW, 0], [-outerL, outerW, 0], [0, 0, -1]);
+            
+            // Top ring face (at full height)
+            // Outer rectangle minus inner rectangle - 4 rectangles
+            // Front strip
+            stlContent += createTriangle([-outerL, outerW, height], [-innerL, outerW, height], [-innerL, innerW, height], [0, 0, 1]);
+            stlContent += createTriangle([-outerL, outerW, height], [-innerL, innerW, height], [-outerL, innerW, height], [0, 0, 1]);
+            // Back strip  
+            stlContent += createTriangle([innerL, -outerW, height], [outerL, -outerW, height], [outerL, -innerW, height], [0, 0, 1]);
+            stlContent += createTriangle([innerL, -outerW, height], [outerL, -innerW, height], [innerL, -innerW, height], [0, 0, 1]);
+            // Left strip
+            stlContent += createTriangle([-outerL, -outerW, height], [-outerL, outerW, height], [-innerL, outerW, height], [0, 0, 1]);
+            stlContent += createTriangle([-outerL, -outerW, height], [-innerL, outerW, height], [-innerL, -outerW, height], [0, 0, 1]);
+            // Right strip
+            stlContent += createTriangle([innerL, outerW, height], [outerL, outerW, height], [outerL, -outerW, height], [0, 0, 1]);
+            stlContent += createTriangle([innerL, outerW, height], [outerL, -outerW, height], [innerL, -outerW, height], [0, 0, 1]);
+            
+            // Inner bottom face (at bottomThickness)
+            stlContent += createTriangle([-innerL, -innerW, bottomThickness], [innerL, innerW, bottomThickness], [innerL, -innerW, bottomThickness], [0, 0, 1]);
+            stlContent += createTriangle([-innerL, -innerW, bottomThickness], [-innerL, innerW, bottomThickness], [innerL, innerW, bottomThickness], [0, 0, 1]);
+            
+            // Outer walls (from bottomThickness to height)
+            // Front wall
+            stlContent += createTriangle([-outerL, outerW, bottomThickness], [-outerL, outerW, height], [outerL, outerW, height], [0, 1, 0]);
+            stlContent += createTriangle([-outerL, outerW, bottomThickness], [outerL, outerW, height], [outerL, outerW, bottomThickness], [0, 1, 0]);
+            // Back wall
+            stlContent += createTriangle([-outerL, -outerW, bottomThickness], [outerL, -outerW, height], [-outerL, -outerW, height], [0, -1, 0]);
+            stlContent += createTriangle([-outerL, -outerW, bottomThickness], [outerL, -outerW, bottomThickness], [outerL, -outerW, height], [0, -1, 0]);
+            // Left wall
+            stlContent += createTriangle([-outerL, -outerW, bottomThickness], [-outerL, outerW, height], [-outerL, -outerW, height], [-1, 0, 0]);
+            stlContent += createTriangle([-outerL, -outerW, bottomThickness], [-outerL, outerW, bottomThickness], [-outerL, outerW, height], [-1, 0, 0]);
+            // Right wall
+            stlContent += createTriangle([outerL, -outerW, bottomThickness], [outerL, outerW, height], [outerL, outerW, bottomThickness], [1, 0, 0]);
+            stlContent += createTriangle([outerL, -outerW, bottomThickness], [outerL, -outerW, height], [outerL, outerW, height], [1, 0, 0]);
+            
+            // Inner walls (from bottomThickness to height)
+            // Front inner wall
+            stlContent += createTriangle([-innerL, innerW, bottomThickness], [innerL, innerW, height], [-innerL, innerW, height], [0, -1, 0]);
+            stlContent += createTriangle([-innerL, innerW, bottomThickness], [innerL, innerW, bottomThickness], [innerL, innerW, height], [0, -1, 0]);
+            // Back inner wall
+            stlContent += createTriangle([-innerL, -innerW, bottomThickness], [-innerL, -innerW, height], [innerL, -innerW, height], [0, 1, 0]);
+            stlContent += createTriangle([-innerL, -innerW, bottomThickness], [innerL, -innerW, height], [innerL, -innerW, bottomThickness], [0, 1, 0]);
+            // Left inner wall
+            stlContent += createTriangle([-innerL, -innerW, bottomThickness], [-innerL, innerW, height], [-innerL, innerW, bottomThickness], [1, 0, 0]);
+            stlContent += createTriangle([-innerL, -innerW, bottomThickness], [-innerL, -innerW, height], [-innerL, innerW, height], [1, 0, 0]);
+            // Right inner wall
+            stlContent += createTriangle([innerL, -innerW, bottomThickness], [innerL, innerW, bottomThickness], [innerL, innerW, height], [-1, 0, 0]);
+            stlContent += createTriangle([innerL, -innerW, bottomThickness], [innerL, innerW, height], [innerL, -innerW, height], [-1, 0, 0]);
+            
+            // Side walls of bottom thickness (from 0 to bottomThickness)
+            // Outer walls
+            stlContent += createTriangle([-outerL, outerW, 0], [outerL, outerW, bottomThickness], [-outerL, outerW, bottomThickness], [0, 1, 0]);
+            stlContent += createTriangle([-outerL, outerW, 0], [outerL, outerW, 0], [outerL, outerW, bottomThickness], [0, 1, 0]);
+            
+            stlContent += createTriangle([-outerL, -outerW, 0], [-outerL, -outerW, bottomThickness], [outerL, -outerW, bottomThickness], [0, -1, 0]);
+            stlContent += createTriangle([-outerL, -outerW, 0], [outerL, -outerW, bottomThickness], [outerL, -outerW, 0], [0, -1, 0]);
+            
+            stlContent += createTriangle([-outerL, -outerW, 0], [-outerL, outerW, bottomThickness], [-outerL, outerW, 0], [-1, 0, 0]);
+            stlContent += createTriangle([-outerL, -outerW, 0], [-outerL, -outerW, bottomThickness], [-outerL, outerW, bottomThickness], [-1, 0, 0]);
+            
+            stlContent += createTriangle([outerL, -outerW, 0], [outerL, outerW, 0], [outerL, outerW, bottomThickness], [1, 0, 0]);
+            stlContent += createTriangle([outerL, -outerW, 0], [outerL, outerW, bottomThickness], [outerL, -outerW, bottomThickness], [1, 0, 0]);
+            
+            // Inner walls of bottom thickness
+            stlContent += createTriangle([-innerL, innerW, 0], [-innerL, innerW, bottomThickness], [innerL, innerW, bottomThickness], [0, -1, 0]);
+            stlContent += createTriangle([-innerL, innerW, 0], [innerL, innerW, bottomThickness], [innerL, innerW, 0], [0, -1, 0]);
+            
+            stlContent += createTriangle([-innerL, -innerW, 0], [innerL, -innerW, bottomThickness], [-innerL, -innerW, bottomThickness], [0, 1, 0]);
+            stlContent += createTriangle([-innerL, -innerW, 0], [innerL, -innerW, 0], [innerL, -innerW, bottomThickness], [0, 1, 0]);
+            
+            stlContent += createTriangle([-innerL, -innerW, 0], [-innerL, innerW, 0], [-innerL, innerW, bottomThickness], [1, 0, 0]);
+            stlContent += createTriangle([-innerL, -innerW, 0], [-innerL, innerW, bottomThickness], [-innerL, -innerW, bottomThickness], [1, 0, 0]);
+            
+            stlContent += createTriangle([innerL, -innerW, 0], [innerL, innerW, bottomThickness], [innerL, innerW, 0], [-1, 0, 0]);
+            stlContent += createTriangle([innerL, -innerW, 0], [innerL, -innerW, bottomThickness], [innerL, innerW, bottomThickness], [-1, 0, 0]);
+            
+            stlContent += 'endsolid RectangleThickBottom\n';
+            return stlContent;
+        }
+        
+        function createTriangle(v1, v2, v3, normal) {
+            return `  facet normal ${normal[0].toFixed(6)} ${normal[1].toFixed(6)} ${normal[2].toFixed(6)}\n` +
+                   `    outer loop\n` +
+                   `      vertex ${v1[0].toFixed(6)} ${v1[1].toFixed(6)} ${v1[2].toFixed(6)}\n` +
+                   `      vertex ${v2[0].toFixed(6)} ${v2[1].toFixed(6)} ${v2[2].toFixed(6)}\n` +
+                   `      vertex ${v3[0].toFixed(6)} ${v3[1].toFixed(6)} ${v3[2].toFixed(6)}\n` +
+                   `    endloop\n` +
+                   `  endfacet\n`;
+        }
+        
+        function downloadSTL(content, filename) {
+            const blob = new Blob([content], { type: 'application/octet-stream' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+        
+        // Auto-update preview when inputs change
+        function setupEventListeners() {
+            // Cylinder inputs
+            document.getElementById('outerDiameter').addEventListener('input', updatePreview);
+            document.getElementById('innerDiameter').addEventListener('input', updatePreview);
+            document.getElementById('cylinderHeight').addEventListener('input', updatePreview);
+            document.getElementById('cylinderBottomThickness').addEventListener('input', updatePreview);
+            document.getElementById('segments').addEventListener('input', updatePreview);
+            
+            // Rectangle inputs
+            document.getElementById('outerLength').addEventListener('input', updatePreview);
+            document.getElementById('outerWidth').addEventListener('input', updatePreview);
+            document.getElementById('innerLength').addEventListener('input', updatePreview);
+            document.getElementById('innerWidth').addEventListener('input', updatePreview);
+            document.getElementById('rectangleHeight').addEventListener('input', updatePreview);
+            document.getElementById('rectangleBottomThickness').addEventListener('input', updatePreview);
+        }
+        
+        // Initialize
+        setupEventListeners();
+        updatePreview();
+    </script>
+</body>
+</html>

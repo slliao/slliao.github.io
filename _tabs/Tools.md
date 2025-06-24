@@ -11,3 +11,5 @@ order: 4
 [Molarity Calculator](/script_homemade/molarity.html)
 
 [Deposition Thickness](/script_homemade/lithium_thickness.html)
+
+[STL generator](/script_homemade/stl_tube_generator.html)
