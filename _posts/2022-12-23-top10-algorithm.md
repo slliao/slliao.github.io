@@ -4,6 +4,7 @@ categories: [Tools, Numerical methods]
 tags: [Algorithms]
 pin: True
 math: true
+last_modified_at: 2026-02-22
 ---
 
 Very interesting [series](https://www.cs.fsu.edu/~lacher/courses/COT4401/notes/cise_v2_i1/index.html) on the top 10 algorithms with the greatest influence on the development and practice of science and engineering in the 20th century.
@@ -23,7 +24,7 @@ Source: [Computing in Science & Engineering ( Volume: 2, Issue: 1, Jan.-Feb. 200
 
 ---
 
-## 同場加映：Top Equations in Machine Learning
+## Bonus: Top Equations in Machine Learning
 
 ### Probability & Statistics
 
