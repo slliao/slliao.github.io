@@ -1,12 +1,16 @@
 #  The contact options.
 
 -
-   type: linkedin
-   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-   url:  'https://www.linkedin.com/in/mark-liao/'   # Fill with your Linkedin homepage
+  type: linkedin
+  icon: 'fab fa-linkedin'
+  url: 'https://www.linkedin.com/in/mark-liao/'
 -
   type: github
   icon: 'fab fa-github'
+-
+  type: google-scholar
+  icon: 'fas fa-graduation-cap'
+  url: 'https://scholar.google.com/citations?user=Qx1TdSUAAAAJ'
 -
 #  type: rss
 #  icon: 'fas fa-rss'
