@@ -4,9 +4,9 @@
   type: linkedin
   icon: 'fab fa-linkedin'
   url: 'https://www.linkedin.com/in/mark-liao/'
--
-  type: github
-  icon: 'fab fa-github'
+#-
+#  type: github
+#  icon: 'fab fa-github'
 -
   type: google-scholar
   icon: 'fas fa-graduation-cap'

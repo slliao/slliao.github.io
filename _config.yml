@@ -22,7 +22,7 @@ timezone: America/Los_Angeles
 
 title: Mark Liao                         # the main title
 
-tagline: A journey from physics to engineering   # it will display as the sub-title
+tagline: "Physics across scales: quantum mechanics, ML, and energy materials"   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Random Thoughts
