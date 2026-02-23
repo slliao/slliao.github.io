@@ -59,4 +59,4 @@ Built with [Jekyll](https://jekyllrb.com/) using the [Chirpy theme](https://gith
 ## Connect
 
 - LinkedIn: [mark-liao](https://www.linkedin.com/in/mark-liao/)
-- GitHub: [slliao](https://github.com/slliao)
+

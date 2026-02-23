@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 1
 ---
 
-I am a Staff Scientist at [Factorial Energy](https://www.factorial.energy/), where I work at the intersection of computational chemistry, non-equilibrium thermodynamics, and machine learning to understand and improve electrolytes for next-generation batteries.
+I am a Staff Scientist at Factorial Energy, where I work at the intersection of computational chemistry, non-equilibrium thermodynamics, and machine learning to understand and improve electrolytes for next-generation batteries.
 
 My research centers on **thermodynamic properties of electrolytes** and the **electrode-electrolyte interface** — how ions are solvated, how they move, and how the interface forms and evolves. I am particularly drawn to non-equilibrium transport phenomena: understanding ionic conductivity through the lens of Onsager theory, correlated ion motion in concentrated electrolytes, and the physical origins of electrochemical performance.
 
