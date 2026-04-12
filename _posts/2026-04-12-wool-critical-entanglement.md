@@ -37,9 +37,9 @@ $$d^2 = C_\infty\, n_e\, b^2$$
 
 ### 3. Wool's Geometric Factor
 
-Wool (1993) introduced a factor connecting the local repeat-unit geometry to macroscopic entanglement. For a repeat unit with $z$ monomers per crystallographic c-axis repeat, backbone bond length $b$, and projected length $C$ along the chain axis, the ratio $(zb/C)^2$ measures how efficiently the backbone traverses space.
+Wool (1993) introduced a repeat-unit geometry factor via a **critical overlap volume** argument. Entanglement is triggered when a chain's coil volume contains enough monomers from *other* chains to create unavoidable topological constraints. The number of foreign monomers inside the coil scales with chain dimensions and packing, and the ratio $(zb/C)^2$ emerges naturally from this condition — where $z$ is monomers per c-axis repeat, $b$ the backbone bond length, and $C$ the projected repeat-unit length along the chain axis.
 
-When $C \approx zb$, the chain is nearly fully extended and $(zb/C)^2 \approx 1$. When the repeat unit is compact or twisted ($C \ll zb$), the chain coils tightly, intersects neighboring chains more readily, and reaches the entanglement condition at lower molecular weight.
+This factor is a single-chain geometric quantity, distinct from the tube diameter $d$, which is a many-chain topological property. When $C \approx zb$ the chain is nearly fully extended and coils loosely; when $C \ll zb$ the repeat unit is compact, the chain fills its coil volume more densely with foreign monomers, and the entanglement threshold is reached at lower molecular weight.
 
 ---
 
@@ -70,21 +70,23 @@ $$\langle r^2 \rangle = C_\infty N b^2$$
 
 $$d^2 = C_\infty\, n_e\, b^2$$
 
-**Step 3 — Geometric constraint.** Wool's condition ties the tube diameter to repeat-unit geometry:
+**Step 3 — Critical overlap condition.** Wool's argument requires that the number of foreign-chain monomers inside a coil of $n_e$ bonds reaches a critical value. Working out the volume fractions, this condition introduces the geometric ratio $(zb/C)^2$ as a prefactor to $n_e$:
 
-$$d^2 \propto \left(\frac{zb}{C}\right)^2$$
+$$n_e \propto \left(\frac{zb}{C}\right)^{-2}$$
 
-**Step 4 — Convert to molecular weight.** With $j$ backbone atoms per monomer and monomer mass $M_0$:
+Chains that coil compactly (small $C/zb$) reach this threshold with fewer bonds; extended chains need more.
+
+**Step 4 — Convert to molecular weight.** $n_e$ is a bond count; dividing by $j$ (backbone atoms per monomer) converts it to a monomer count, giving the entanglement strand molecular weight:
 
 $$M_e = \frac{n_e}{j}\, M_0$$
 
-**Step 5 — Assemble.** Combining steps 2–4 and inserting the prefactor 30.89 (which absorbs the tube-model geometric constant and the empirical relation $M_c \approx 2M_e$) gives the final expression.
+**Step 5 — Assemble.** Combining steps 1–4 and inserting the prefactor 30.89 gives the final expression. Note that the formula yields $M'_c$, which corresponds to the onset of entanglement ($M_e$). The experimentally measured critical molecular weight $M_c$ — defined as the inflection point in the $\log \eta$ vs. $\log M$ curve — is empirically larger, with $M_c / M_e$ typically in the range 1.7–2.4 depending on chain flexibility. The prefactor 30.89 absorbs both the tube-model geometric constant and an approximate factor of 2 for this ratio.
 
-**Simplified form for vinyl polymers.** Setting $z = 1$ and $(b/C)^2 \approx 1/30$ recovers (Sperling Eq. 10.59b):
+**Empirical correlation for flexible backbones.** Across many common vinyl and addition polymers, Sperling (Eq. 10.59b) notes the empirical approximation:
 
 $$M_c \approx 30\, C_\infty M_0$$
 
-For simple backbones, $M_c$ is governed almost entirely by chain stiffness and monomer mass.
+This is a data-fitted correlation, not a geometric derivation — the numerical coefficient is an average over a class of polymers and should not be applied to stiff or aromatic-backbone systems.
 
 ---
 
@@ -95,7 +97,7 @@ $$M'_c \propto \underbrace{\left(\frac{zb}{C}\right)^2}_{\text{coiling efficienc
 - **Coiling efficiency** — compact repeat units lower $M_c$; extended ones raise it.
 - **Mass per bond** — heavier or more complex monomers push $M_c$ higher.
 - **Chain stiffness** — stiffer chains need longer contour lengths to entangle.
-- **Prefactor 30.89** — encodes the tube-model geometry and the $M_c \approx 2M_e$ empirical factor.
+- **Prefactor 30.89** — encodes the tube-model geometry constant and an approximate $M_c / M_e \approx 2$ factor (empirically 1.7–2.4; varies with chain flexibility).
 
 ---
 
@@ -115,7 +117,23 @@ Above $M_c$, the viscoelastic spectrum also develops a **rubbery plateau** — a
 
 $$G_N^0 = \frac{\rho RT}{M_e}$$
 
-This provides an experimental route to $M_e$ (and hence $M_c$) from rheological measurements.
+This provides an experimental route to $M_e$ from rheological measurements. Note that the Doi–Edwards tube model introduces a prefactor of $\frac{4}{5}$, giving $G_N^0 = \frac{4}{5}\frac{\rho RT}{M_e}$; the form above is the classical rubber-elasticity (phenomenological) version. Both conventions appear in the literature — check which definition of $M_e$ a source uses before comparing values.
+
+**$M_c$ and $M_e$ are not the same quantity.** $M_e$ is a network topology parameter extracted from $G_N^0$. $M_c$ is the inflection point in the zero-shear viscosity curve. They are related but distinct: the ratio $M_c/M_e$ typically falls between 1.7 and 2.4, and varies with chain flexibility. Treating them as interchangeable introduces systematic error.
+
+---
+
+## A Modern Perspective: Packing Length
+
+Wool's geometric factor is an early-1990s framework. The field has since converged on a more unified quantity: the **packing length**, introduced by Fetters et al. (1994):
+
+$$p = \frac{M}{\rho N_A \langle r^2 \rangle_0}$$
+
+Here $\langle r^2 \rangle_0$ is the unperturbed mean-square end-to-end distance. In a polymer melt, Flory's theorem tells us that chains adopt ideal (unperturbed) conformations, so $\langle r^2 \rangle_0 = C_\infty N b^2$ — the same quantity used throughout this post. $p$ measures how densely a chain fills its own coil volume — a stiffer, more extended chain has a larger $p$. The entanglement molecular weight scales as:
+
+$$M_e \propto p^3$$
+
+This single relation unifies entanglement behavior across chemically diverse polymers and connects directly to measurable chain dimensions. Wool's formula and the packing length approach address the same physics from different angles; the latter is now the standard language in modern polymer rheology.
 
 ---
 
@@ -126,3 +144,4 @@ This provides an experimental route to $M_e$ (and hence $M_c$) from rheological 
 3. de Gennes, P.-G. (1971). Reptation of a polymer chain in the presence of fixed obstacles. *J. Chem. Phys.*, 55, 572.
 4. Doi, M. & Edwards, S. F. (1986). *The Theory of Polymer Dynamics*. Oxford University Press.
 5. Flory, P. J. (1953). *Principles of Polymer Chemistry*. Cornell University Press.
+6. Fetters, L. J., Lohse, D. J., Richter, D., Witten, T. A. & Zirkel, A. (1994). Connection between polymer molecular weight, density, chain dimensions, and melt viscoelastic properties. *Macromolecules*, 27, 4639–4647.
