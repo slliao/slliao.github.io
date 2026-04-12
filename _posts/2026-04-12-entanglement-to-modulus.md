@@ -7,7 +7,7 @@ math: true
 
 ## Overview
 
-[Part 1]({% post_url 2026-04-12-wool-critical-entanglement %}) established that above the critical entanglement molecular weight $M_c$, polymer chains form a persistent topological network. This post asks the next question: **what are the mechanical consequences?** Specifically, how does that network resist deformation, and how does the molecular structure — chain stiffness, repeat-unit geometry, monomer mass — determine the modulus?
+[Part 1]({% post_url 2026-04-11-wool-critical-entanglement %}) established that above the critical entanglement molecular weight $M_c$, polymer chains form a persistent topological network. This post asks the next question: **what are the mechanical consequences?** Specifically, how does that network resist deformation, and how does the molecular structure — chain stiffness, repeat-unit geometry, monomer mass — determine the modulus?
 
 ---
 
